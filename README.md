@@ -1,9 +1,5 @@
-to compile:
+to run from out\production\MonsterVsHeroes:
 ```shell
-javac -d classes -sourcepath src -cp classes .\src\mvh\Main.java
-```
+java mvh.Main ..\..\..\world.txt ..\..\..\log.txt 12345
 
-to run:
-```shell
-java mvh.Main
 ```
