@@ -1,5 +1,6 @@
 package mvh.world;
 
+import mvh.enums.Direction;
 import mvh.enums.WeaponType;
 
 /**
@@ -55,6 +56,16 @@ public final class Monster extends Entity {
     @Override
     public int armorStrength() {
         return MONSTER_ARMOR_STRENGTH;
+    }
+
+    @Override
+    public Direction chooseMove(World local) {
+        return null;
+    }
+
+    @Override
+    public Direction attackWhere(World local) {
+        return null;
     }
 
     /**

@@ -1,5 +1,9 @@
 package mvh.util;
 
+import mvh.world.World;
+
+import java.io.File;
+
 /**
  * Class to assist reading in world file
  * @author Jonathan Hudson
@@ -7,4 +11,7 @@ package mvh.util;
  */
 public final class Reader {
 
+    public static World loadWorld(File fileWorld) {
+        return null;
+    }
 }

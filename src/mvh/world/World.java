@@ -14,6 +14,10 @@ import java.util.HashMap;
  */
 public class World {
 
+    public String gameString() {
+        return null;
+    }
+
     /**
      * World starts ACTIVE, but will turn INACTIVE after a simulation ends with only one type of Entity still ALIVE
      */
@@ -136,6 +140,10 @@ public class World {
             }
         }
         checkActive();
+    }
+
+    private World getLocal(int attackWorldSize, int row, int column) {
+        return null;
     }
 
     /**

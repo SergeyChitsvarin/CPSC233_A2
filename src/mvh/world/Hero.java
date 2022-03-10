@@ -1,5 +1,7 @@
 package mvh.world;
 
+import mvh.enums.Direction;
+
 /**
  * A Monster is an Entity with a user provide WEAPON STRENGTH and ARMOR STRENGTH
  * @author Jonathan Hudson
@@ -46,6 +48,16 @@ public final class Hero extends Entity{
     @Override
     public int armorStrength() {
         return armorStrength;
+    }
+
+    @Override
+    public Direction chooseMove(World local) {
+        return null;
+    }
+
+    @Override
+    public Direction attackWhere(World local) {
+        return null;
     }
 
     /**
