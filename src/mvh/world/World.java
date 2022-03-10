@@ -14,8 +14,12 @@ import java.util.HashMap;
  */
 public class World {
 
-    public String gameString() {
-        return null;
+    public String gameString(World world) {
+
+        String gameString  = String.valueOf(world);
+        System.out.println(gameString);
+
+        return gameString;
     }
 
     /**
@@ -307,7 +311,7 @@ public class World {
 
     @Override
     public String toString() {
-        return gameString();
+        return gameString(this);
     }
 
     /**

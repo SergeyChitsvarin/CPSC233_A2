@@ -45,6 +45,9 @@ public final class Main {
         Menu.setup(fileLog);
         World world = Reader.loadWorld(fileWorld);
 
+        // DELETE ME
+        System.out.println(world);
+
         //Run simulation
         runSimulation(world);
     }
@@ -123,7 +126,7 @@ public final class Main {
      */
     private static void runSimulation(World world) {
         while (world.isActive()) {
-            String message = world.gameString();
+            String message = world.gameString(world);
             Menu.println(message);
             if (Menu.continueSimulation()) {
                 world.advanceSimulation();
@@ -131,7 +134,7 @@ public final class Main {
                 world.endSimulation();
             }
         }
-        String message = world.gameString();
+        String message = world.gameString(world);
         Menu.println(message);
     }
 }
