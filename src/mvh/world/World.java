@@ -15,8 +15,20 @@ import java.util.HashMap;
 public class World {
 
     public String gameString(World world) {
-
-        String gameString  = String.valueOf(world);
+        int rows = world.getRows();
+        int columns = world.getColumns();
+        System.out.println("NAME \tS\tH\tSTATE\tINFO\n");
+        int tileNum = rows * columns;
+        for (int currentColumn = 0; currentColumn<columns; currentColumn++) {
+            for (int currentRow = 0; currentRow < rows; currentRow++) {
+                Entity entity = world.getEntity(currentRow, currentColumn);
+//                if (entity.equals(null)){
+//                    return null;
+//                }
+//                System.out.println(entity[0][0]);
+            }
+        }
+        String gameString = String.valueOf(world);
         System.out.println(gameString);
 
         return gameString;
