@@ -3,6 +3,7 @@ package mvh.world;
 import mvh.Main;
 import mvh.Menu;
 import mvh.enums.Direction;
+import mvh.enums.Symbol;
 import mvh.enums.WeaponType;
 
 import java.util.ArrayList;
@@ -22,11 +23,45 @@ public class World {
         return "DEAD";
     }
 
+    public String worldString(Entity[][] world){
+        int rows = world.length;
+        int columns = world[0].length;
+
+        int numOfWallsHorizontal = columns + 2;
+        String gameMap = "";
+
+        for (int wall=0; wall < numOfWallsHorizontal; wall++){
+            gameMap = gameMap + "#";
+        }
+        gameMap = gameMap + "\n";
+
+        for (int row = 0; row < rows; row++){
+            gameMap = gameMap + "#";
+            for (int column = 0; column < columns; column++){
+                Entity entity = world[row][column];
+                char mySymbol;
+                if (entity == null){
+                    mySymbol = mvh.enums.Symbol.FLOOR.getSymbol();
+                } else {
+                    mySymbol = entity.isDead() ? Symbol.DEAD.getSymbol() : entity.getSymbol();
+                }
+
+                String symbolString = String.valueOf(mySymbol);
+                gameMap = gameMap + symbolString;
+            }
+            gameMap = gameMap + "#\n";
+        }
+        for (int wall=0; wall < numOfWallsHorizontal; wall++){
+            gameMap = gameMap + "#";
+        }
+        return gameMap;
+    }
+
     public String gameString(World world) {
         int rows = world.getRows();
         int columns = world.getColumns();
-        System.out.println("NAME \tS\tH\tSTATE\tINFO\n");
-        // int tileNum = rows * columns;
+        System.out.println(worldString(world.world));
+        System.out.println("NAME \tS\tH\tSTATE\tINFO");
         String gameString = "";
         for (int currentColumn = 0; currentColumn < columns; currentColumn++) {
             for (int currentRow = 0; currentRow < rows; currentRow++) {
