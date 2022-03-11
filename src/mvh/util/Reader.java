@@ -59,6 +59,7 @@ public final class Reader {
                 lineNum--;
 
             }
+            return world;
 
         } catch (FileNotFoundException error) {
             System.out.println("File was not found.");

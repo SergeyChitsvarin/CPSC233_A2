@@ -45,9 +45,6 @@ public final class Main {
         Menu.setup(fileLog);
         World world = Reader.loadWorld(fileWorld);
 
-        // DELETE ME
-        System.out.println(world);
-
         //Run simulation
         runSimulation(world);
     }
