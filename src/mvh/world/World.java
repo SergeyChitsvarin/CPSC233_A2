@@ -3,6 +3,7 @@ package mvh.world;
 import mvh.Main;
 import mvh.Menu;
 import mvh.enums.Direction;
+import mvh.enums.WeaponType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,23 +15,55 @@ import java.util.HashMap;
  */
 public class World {
 
+    public static String stateOfEntity(Boolean state){
+        if (true){
+            return "ALIVE";
+        }
+        return "DEAD";
+    }
+
     public String gameString(World world) {
         int rows = world.getRows();
         int columns = world.getColumns();
         System.out.println("NAME \tS\tH\tSTATE\tINFO\n");
-        int tileNum = rows * columns;
-        for (int currentColumn = 0; currentColumn<columns; currentColumn++) {
+        // int tileNum = rows * columns;
+        String gameString = "";
+        for (int currentColumn = 0; currentColumn < columns; currentColumn++) {
             for (int currentRow = 0; currentRow < rows; currentRow++) {
                 Entity entity = world.getEntity(currentRow, currentColumn);
-//                if (entity.equals(null)){
-//                    return null;
-//                }
-//                System.out.println(entity[0][0]);
+                if (entity instanceof Monster){
+                    char symbol = entity.getSymbol();
+                    String symbolString = String.valueOf(symbol);
+                    Integer health = entity.getHealth();
+                    String healthString = String.valueOf(health);
+                    Boolean state = entity.isAlive();
+                    String stateString = World.stateOfEntity(state);
+                    WeaponType weaponType = ((Monster) entity).getWeaponType();
+                    String weaponTypeString = String.valueOf(weaponType);
+                    //System.out.println("MONSTER"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n");
+                    String monsterString = "MONSTER"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n";
+                    gameString = gameString + monsterString;
+                }
+
+                if (entity instanceof Hero){
+                    char symbol = entity.getSymbol();
+                    String symbolString = String.valueOf(symbol);
+                    Integer health = entity.getHealth();
+                    String healthString = String.valueOf(health);
+                    Boolean state = entity.isAlive();
+                    String stateString = World.stateOfEntity(state);
+                    int attackStrength = entity.weaponStrength();
+                    String attackStrengthString = String.valueOf(attackStrength);
+                    int armorStrength = entity.armorStrength();
+                    String armorStrengthString = String.valueOf(armorStrength);
+                    //System.out.println("HERO"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n");
+                    String heroString = "HERO"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n";
+                    gameString = gameString + heroString;
+                }
+
+
             }
         }
-        String gameString = String.valueOf(world);
-        System.out.println(gameString);
-
         return gameString;
     }
 
