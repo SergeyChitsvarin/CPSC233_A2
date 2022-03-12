@@ -58,35 +58,54 @@ public final class Monster extends Entity {
         return MONSTER_ARMOR_STRENGTH;
     }
 
+    /**
+     * Chooses direction for next move
+     * @param local The local view of the entity
+     * @return direction for a desired move
+     */
     @Override
     public Direction chooseMove(World local) {
+        // check rows (bottom to top) and columns (right to left)
         for(int row = local.getRows() - 1 ; row >= 0; row--){
             for(int column = local.getColumns() - 1; column >= 0; column-- ){
 
+                // find entity at current row and column
                Entity entity = local.getEntity(row, column);
 
+               // check if enemy is an alive hero
                 if (entity instanceof Hero && entity.isAlive()){
 
+                    // calculate row and columns for change
                     int rowChange =  row - 2;
                     int columnChange = column - 2;
+
+                    // find direction using calculated columns and rows
                     Direction[] directions = Direction.getDirections(rowChange, columnChange);
 
+                    // for every direction in directions
                     for (Direction direction : directions) {
-                        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+
+                        // choose direction if can move there
+                        if (canMoveToDirection(direction, local, 2, 2)) {
                             return direction;
                         }
                     }
                 }
             }
         }
+        // choose SOUTHWEST if can go there
         Direction direction = Direction.SOUTHWEST;
-        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+        if (canMoveToDirection(direction, local, 2, 2)) {
             return direction;
         }
+
+        // choose random direction if can go there
         direction = Direction.getRandomDirection();
-        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+        if (canMoveToDirection(direction, local, 2, 2)) {
             return direction;
         }
+
+        // do not move
         return Direction.STAY;
     }
 

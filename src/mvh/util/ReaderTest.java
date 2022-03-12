@@ -1,14 +1,14 @@
 package mvh.util;
 
-import mvh.world.Entity;
 import mvh.world.Hero;
 import mvh.world.Monster;
 import mvh.world.World;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ReaderTest {
 
@@ -22,12 +22,12 @@ class ReaderTest {
         World world = Reader.loadWorld(fileWorld);
 
         // checks number of columns and rows
-        assertEquals(world.getColumns(), 3);
-        assertEquals(world.getRows(), 3);
+        assertEquals(3, world.getColumns());
+        assertEquals(3, world.getRows());
 
         // checks that there are entities at position (0,0) and (2,2)
-        assertEquals(world.getEntity(0, 0) instanceof Entity, true);
-        assertEquals(world.getEntity(2, 2) instanceof Entity, true);
+        assertNotNull(world.getEntity(0, 0));
+        assertNotNull(world.getEntity(2, 2));
     }
 
     /**
@@ -41,14 +41,14 @@ class ReaderTest {
 
         // checks monster attributes
         Monster monster = (Monster) world.getEntity(0, 0);
-        assertEquals(monster.getWeaponType().getWeaponStrength(), 4);
-        assertEquals(monster.getSymbol(), 'M');
-        assertEquals(monster.getHealth(), 10);
+        assertEquals(4, monster.getWeaponType().getWeaponStrength());
+        assertEquals('M', monster.getSymbol());
+        assertEquals(10, monster.getHealth());
 
         // checks hero attributes
         Hero hero = (Hero) world.getEntity(2, 2);
-        assertEquals(hero.weaponStrength(), 3);
-        assertEquals(hero.armorStrength(), 1);
-        assertEquals(hero.getHealth(), 10);
+        assertEquals(3, hero.weaponStrength());
+        assertEquals(1, hero.armorStrength());
+        assertEquals(10, hero.getHealth());
     }
 }

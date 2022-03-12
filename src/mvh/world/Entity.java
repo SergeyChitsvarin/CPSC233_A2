@@ -196,4 +196,24 @@ public abstract class Entity {
     public static void resetIDCounter() {
         counter = 1;
     }
+
+    /**
+     * Checks to see if Entity can move to direction
+     * @param direction direction where Entity wants to move
+     * @param local instance of local world for Entity
+     * @param row current row for Entity
+     * @param column current row for Entity
+     * @return return TRUE if can move to direction, otherwise FALSE
+     */
+    protected boolean canMoveToDirection(Direction direction, World local, int row, int column) {
+        // calculate target row and column
+        int targetRow = row + direction.getRowChange();
+        int targetColumn = column + direction.getColumnChange();
+
+        // check if target row and column are valid
+        // check if entity can move to direction
+        return targetRow < local.getRows() &&
+                targetColumn < local.getColumns() &&
+                local.canMoveOnTopOf(targetRow, targetColumn);
+    }
 }

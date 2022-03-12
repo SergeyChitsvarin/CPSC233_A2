@@ -1,57 +1,134 @@
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	10	ALIVE	1  3
+Mons(1)	M	10	ALIVE	SWORD
+Hero(3)	H	10	ALIVE	1  3
+Hero(2)	H	10	ALIVE	1  3
 
-Mons(1) moving SOUTHEAST
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking EAST in direction Hero(2)
+Mons(1) attacked Hero(2) for 2 damage against 1 defense for 1
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	10	ALIVE	1  3
+Hero(3) moving NORTHEAST
+Mons(1)	M	10	ALIVE	SWORD
+Hero(2)	H	9	ALIVE	1  3
+Hero(3)	H	10	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 3 damage against 1 defense for 2
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking EAST in direction Hero(2)
+Mons(1) attacked Hero(2) for 4 damage against 1 defense for 3
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 1 damage against 2 defense for 0
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	8	ALIVE	1  3
+Hero(3) moving NORTHWEST
+Mons(1)	M	10	ALIVE	SWORD
+Hero(3)	H	10	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 4 damage against 1 defense for 3
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 4 damage against 1 defense for 3
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	5	ALIVE	1  3
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 2 damage against 2 defense for 0
+Mons(1)	M	10	ALIVE	SWORD
+Hero(3)	H	7	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 1 damage against 1 defense for 0
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 1 damage against 1 defense for 0
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	5	ALIVE	1  3
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 1 damage against 2 defense for 0
+Mons(1)	M	10	ALIVE	SWORD
+Hero(3)	H	7	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 1 damage against 1 defense for 0
-Hero(2) attacking NORTHWEST in direction Mons(1)
-Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
-MONSTER	M	10	ALIVE	SWORD
-HERO	H	5	ALIVE	1  3
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 2 damage against 1 defense for 1
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 1 damage against 2 defense for 0
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 2 damage against 2 defense for 0
+Mons(1)	M	10	ALIVE	SWORD
+Hero(3)	H	6	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 1 damage against 1 defense for 0
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 4 damage against 1 defense for 3
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 3 damage against 2 defense for 1
-MONSTER	M	9	ALIVE	SWORD
-HERO	H	5	ALIVE	1  3
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 2 damage against 2 defense for 0
+Mons(1)	M	9	ALIVE	SWORD
+Hero(3)	H	3	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
-Mons(1) attacked Hero(2) for 4 damage against 1 defense for 3
-Hero(2) attacking NORTHWEST in direction Mons(1)
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 1 damage against 1 defense for 0
+Hero(2) attacking WEST in direction Mons(1)
 Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
-MONSTER	M	9	ALIVE	SWORD
-HERO	H	2	ALIVE	1  3
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 3 damage against 2 defense for 1
+Mons(1)	M	8	ALIVE	SWORD
+Hero(3)	H	3	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
 
-Mons(1) attacking SOUTHEAST in direction Hero(2)
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 2 damage against 1 defense for 1
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 3 damage against 2 defense for 1
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 2 damage against 2 defense for 0
+Mons(1)	M	7	ALIVE	SWORD
+Hero(3)	H	2	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
+
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 1 damage against 1 defense for 0
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 3 damage against 2 defense for 1
+Mons(1)	M	6	ALIVE	SWORD
+Hero(3)	H	2	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
+
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 2 damage against 1 defense for 1
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 3 damage against 2 defense for 1
+Hero(3) attacking NORTH in direction Mons(1)
+Hero(3) attacked Mons(1) for 3 damage against 2 defense for 1
+Mons(1)	M	4	ALIVE	SWORD
+Hero(3)	H	1	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
+
+Mons(1) attacking SOUTH in direction Hero(3)
+Mons(1) attacked Hero(3) for 2 damage against 1 defense for 1
+Hero(3) died!
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 1 damage against 2 defense for 0
+Mons(1)	M	4	ALIVE	SWORD
+Hero(3)	H	0	ALIVE	1  3
+Hero(2)	H	6	ALIVE	1  3
+
+Mons(1) attacking EAST in direction Hero(2)
+Mons(1) attacked Hero(2) for 3 damage against 1 defense for 2
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 3 damage against 2 defense for 1
+Mons(1)	M	3	ALIVE	SWORD
+Hero(3)	H	0	ALIVE	1  3
+Hero(2)	H	4	ALIVE	1  3
+
+Mons(1) attacking EAST in direction Hero(2)
 Mons(1) attacked Hero(2) for 4 damage against 1 defense for 3
+Hero(2) attacking WEST in direction Mons(1)
+Hero(2) attacked Mons(1) for 2 damage against 2 defense for 0
+Mons(1)	M	3	ALIVE	SWORD
+Hero(3)	H	0	ALIVE	1  3
+Hero(2)	H	1	ALIVE	1  3
+
+Mons(1) attacking EAST in direction Hero(2)
+Mons(1) attacked Hero(2) for 2 damage against 1 defense for 1
 Hero(2) died!
-MONSTER	M	9	ALIVE	SWORD
-HERO	H	0	ALIVE	1  3
+Mons(1)	M	3	ALIVE	SWORD
+Hero(3)	H	0	ALIVE	1  3
+Hero(2)	H	0	ALIVE	1  3
 

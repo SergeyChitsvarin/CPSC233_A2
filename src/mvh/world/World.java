@@ -23,7 +23,7 @@ public class World {
         return "DEAD";
     }
 
-    public String worldString(Entity[][] world){
+    public String worldString(){
         int rows = world.length;
         int columns = world[0].length;
 
@@ -42,7 +42,10 @@ public class World {
                 char mySymbol;
                 if (entity == null){
                     mySymbol = mvh.enums.Symbol.FLOOR.getSymbol();
-                } else {
+                } else if (entity instanceof Wall) {
+                    mySymbol = '#';
+                }
+                else {
                     mySymbol = entity.isDead() ? Symbol.DEAD.getSymbol() : entity.getSymbol();
                 }
 
@@ -60,7 +63,7 @@ public class World {
     public String gameString(World world) {
         int rows = world.getRows();
         int columns = world.getColumns();
-        System.out.println(worldString(world.world));
+        System.out.println(worldString());
         System.out.println("NAME \tS\tH\tSTATE\tINFO");
         String gameString = "";
         for (int currentColumn = 0; currentColumn < columns; currentColumn++) {
@@ -75,8 +78,7 @@ public class World {
                     String stateString = World.stateOfEntity(state);
                     WeaponType weaponType = ((Monster) entity).getWeaponType();
                     String weaponTypeString = String.valueOf(weaponType);
-                    //System.out.println("MONSTER"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n");
-                    String monsterString = "MONSTER"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n";
+                    String monsterString = entity.shortString() + "\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n";
                     gameString = gameString + monsterString;
                 }
 
@@ -91,8 +93,7 @@ public class World {
                     String attackStrengthString = String.valueOf(attackStrength);
                     int armorStrength = entity.armorStrength();
                     String armorStrengthString = String.valueOf(armorStrength);
-                    //System.out.println("HERO"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n");
-                    String heroString = "HERO"+"\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n";
+                    String heroString = entity.shortString() + "\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n";
                     gameString = gameString + heroString;
                 }
 
@@ -113,6 +114,7 @@ public class World {
      * The World starts ACTIVE
      */
     private State state;
+
     /**
      * The storage of entities in World, floor is null, Dead entities can be moved on top of (deleting them essentially from the map)
      */
@@ -226,7 +228,7 @@ public class World {
         checkActive();
     }
 
-    private World getLocal(int attackWorldSize, int row, int column) {
+    protected World getLocal(int attackWorldSize, int row, int column) {
         int minColumn = 0;
         int maxColumn = world[0].length -1;
         int minRows = 0;
@@ -438,5 +440,4 @@ public class World {
     public int getColumns(){
         return world[0].length;
     }
-
 }

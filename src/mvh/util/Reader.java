@@ -74,6 +74,8 @@ public final class Reader {
                 lineNum--;
 
             }
+            // reset id counter
+            Entity.resetIDCounter();
             // returns world object with Hero and Monster entities (if applicable)
             return world;
             // bring up error if file was not found
