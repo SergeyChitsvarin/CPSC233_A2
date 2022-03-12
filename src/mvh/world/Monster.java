@@ -60,11 +60,50 @@ public final class Monster extends Entity {
 
     @Override
     public Direction chooseMove(World local) {
-        return null;
+        for(int row = local.getRows() - 1 ; row >= 0; row--){
+            for(int column = local.getColumns() - 1; column >= 0; column-- ){
+
+               Entity entity = local.getEntity(row, column);
+
+                if (entity instanceof Hero && entity.isAlive()){
+
+                    int rowChange =  row - 2;
+                    int columnChange = column - 2;
+                    Direction[] directions = Direction.getDirections(rowChange, columnChange);
+
+                    for (Direction direction : directions) {
+                        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+                            return direction;
+                        }
+                    }
+                }
+            }
+        }
+        Direction direction = Direction.SOUTHWEST;
+        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+            return direction;
+        }
+        direction = Direction.getRandomDirection();
+        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+            return direction;
+        }
+        return Direction.STAY;
     }
 
     @Override
     public Direction attackWhere(World local) {
+        for(int row = local.getRows() - 1 ; row >= 0; row--){
+            for(int column = local.getColumns() - 1; column >= 0; column-- ){
+
+                Entity entity = local.getEntity(row, column);
+
+                if (entity instanceof Hero && entity.isAlive()){
+                    int rowChange =  row  - 1;
+                    int columnChange = column - 1;
+                    return Direction.getDirection(rowChange, columnChange);
+                }
+            }
+        }
         return null;
     }
 

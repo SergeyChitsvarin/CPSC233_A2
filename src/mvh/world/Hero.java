@@ -52,11 +52,49 @@ public final class Hero extends Entity{
 
     @Override
     public Direction chooseMove(World local) {
-        return null;
+        for(int row=0; row< local.getRows(); row++ ){
+            for(int column=0; column < local.getColumns(); column++ ){
+
+                Entity entity = local.getEntity(row, column);
+
+                if (entity instanceof Monster && entity.isAlive()){
+
+                    int rowChange =  row - 2;
+                    int columnChange = column - 2;
+                    Direction[] directions = Direction.getDirections(rowChange, columnChange);
+
+                    for (Direction direction : directions) {
+                        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+                            return direction;
+                        }
+                    }
+                }
+            }
+        }
+        Direction direction = Direction.NORTHEAST;
+        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+            return direction;
+        }
+        direction = Direction.getRandomDirection();
+        if (local.canMoveOnTopOf(2 + direction.getRowChange(), 2 + direction.getColumnChange())) {
+            return direction;
+        }
+        return Direction.STAY;
     }
 
     @Override
     public Direction attackWhere(World local) {
+        for(int row=0; row< local.getRows(); row++ ){
+            for(int column=0; column < local.getColumns(); column++ ){
+            Entity entity = local.getEntity(row, column);
+
+                if (entity instanceof Monster && entity.isAlive()){
+                    int rowChange =  row  - 1;
+                    int columnChange = column - 1;
+                    return Direction.getDirection(rowChange, columnChange);
+                }
+            }
+        }
         return null;
     }
 

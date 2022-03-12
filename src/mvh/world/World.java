@@ -227,7 +227,36 @@ public class World {
     }
 
     private World getLocal(int attackWorldSize, int row, int column) {
-        return null;
+        int minColumn = 0;
+        int maxColumn = world[0].length -1;
+        int minRows = 0;
+        int maxRows = world.length -1;
+
+        int maxRange = (attackWorldSize-1)/2;
+
+        int startRow = Math.max(minRows, (row - maxRange));
+        int stopRow = Math.min(maxRows, (row + maxRange));
+        int startColumn = Math.max(minColumn, (column - maxRange));
+        int stopColumn = Math.min(maxColumn, (column + maxRange));
+
+        World attackWorld = new World(attackWorldSize, attackWorldSize);
+        int attackRow = 0;
+        int attackColumn = 0;
+        for (int currentRow = row - maxRange; currentRow <= row + maxRange; currentRow++) {
+            for (int currentColumn = column - maxRange; currentColumn <= column + maxRange; currentColumn++){
+
+                if ((currentRow < startRow) || (currentRow > stopRow) || (currentColumn < startColumn) || (currentColumn > stopColumn)) {
+                    attackWorld.addEntity(attackRow, attackColumn, Wall.getWall());
+                }else{
+                    Entity entity = world[currentRow][currentColumn];
+                    attackWorld.addEntity(attackRow, attackColumn, entity);
+                }
+                attackColumn++;
+            }
+            attackRow++;
+            attackColumn = 0;
+        }
+        return attackWorld;
     }
 
     /**
