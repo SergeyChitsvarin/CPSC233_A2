@@ -23,83 +23,148 @@ public class World {
         return "DEAD";
     }
 
+    /**
+     * returns string representation of the world
+     * @return returns string representation of the world
+     */
     public String worldString(){
+
+        // calculate number of rows and columns
         int rows = world.length;
         int columns = world[0].length;
 
+        // calculate number of horizontal walls
         int numOfWallsHorizontal = columns + 2;
+
+        // initialize game map
         String gameMap = "";
 
+        // add top border (#)
         for (int wall=0; wall < numOfWallsHorizontal; wall++){
             gameMap = gameMap + "#";
         }
+
+        // add new line
         gameMap = gameMap + "\n";
 
+        // check rows from top to bottom
         for (int row = 0; row < rows; row++){
+
+            // add right wall
             gameMap = gameMap + "#";
+
+            // check columns left to right
             for (int column = 0; column < columns; column++){
+
+                // find entity at current row and column
                 Entity entity = world[row][column];
+
+                // declare symbol
                 char mySymbol;
+
+                // if entity is null, then add floor symbol
                 if (entity == null){
                     mySymbol = mvh.enums.Symbol.FLOOR.getSymbol();
+
+                    // if entity is wall, return wall symbol
                 } else if (entity instanceof Wall) {
                     mySymbol = '#';
-                }
+                }// if alive entity is a monster or a hero, return corresponding symbol
+                //if entity is dead, return dead symbol
                 else {
                     mySymbol = entity.isDead() ? Symbol.DEAD.getSymbol() : entity.getSymbol();
                 }
 
+                // add string value of symbol
                 String symbolString = String.valueOf(mySymbol);
                 gameMap = gameMap + symbolString;
             }
+            // add new line
             gameMap = gameMap + "#\n";
         }
+        // add bottom border/wall
         for (int wall=0; wall < numOfWallsHorizontal; wall++){
             gameMap = gameMap + "#";
         }
+        // return gameMap
         return gameMap;
     }
 
+    /**
+     * Returns string representation of the game
+     * @param world instance of the game world
+     * @return string representation of the game
+     */
     public String gameString(World world) {
+        // get number of rows and columns
         int rows = world.getRows();
         int columns = world.getColumns();
+
+        // print representation of the game world
         System.out.println(worldString());
+
+        // print header
         System.out.println("NAME \tS\tH\tSTATE\tINFO");
+
+        // initialize gamestring
         String gameString = "";
-        for (int currentColumn = 0; currentColumn < columns; currentColumn++) {
-            for (int currentRow = 0; currentRow < rows; currentRow++) {
+        //check all rows and columns
+        for (int currentRow = 0; currentRow < rows; currentRow++) {
+            for (int currentColumn = 0; currentColumn < columns; currentColumn++) {
+                // find entity at current row and column
                 Entity entity = world.getEntity(currentRow, currentColumn);
+
+                // check if entity is an instance of Monster
                 if (entity instanceof Monster){
+                    // find entity symbol and corresponding string
                     char symbol = entity.getSymbol();
                     String symbolString = String.valueOf(symbol);
+
+                    // find entity health and corresponding string
                     Integer health = entity.getHealth();
                     String healthString = String.valueOf(health);
+
+                    // find entity state and corresponding string
                     Boolean state = entity.isAlive();
                     String stateString = World.stateOfEntity(state);
+
+                    // find entity weapon and corresponding string
                     WeaponType weaponType = ((Monster) entity).getWeaponType();
                     String weaponTypeString = String.valueOf(weaponType);
+
+                    // add string representation of a monster to gamestring
                     String monsterString = entity.shortString() + "\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + weaponTypeString + "\n";
                     gameString = gameString + monsterString;
                 }
 
                 if (entity instanceof Hero){
+                    // find entity symbol and corresponding string
                     char symbol = entity.getSymbol();
                     String symbolString = String.valueOf(symbol);
+
+                    // find entity health and corresponding string
                     Integer health = entity.getHealth();
                     String healthString = String.valueOf(health);
+
+                    // find entity state and corresponding string
                     Boolean state = entity.isAlive();
                     String stateString = World.stateOfEntity(state);
+
+                    // find entity attack strength and corresponding string
                     int attackStrength = entity.weaponStrength();
                     String attackStrengthString = String.valueOf(attackStrength);
+
+                    // find entity armor strength and corresponding string
                     int armorStrength = entity.armorStrength();
                     String armorStrengthString = String.valueOf(armorStrength);
+
+                    // add string representation of a hero to game string
                     String heroString = entity.shortString() + "\t"+ symbolString +"\t"+ healthString +"\t" + stateString + "\t" + armorStrengthString + "  " + attackStrengthString + "\n";
                     gameString = gameString + heroString;
                 }
-
-
             }
         }
+        // return game string
         return gameString;
     }
 
@@ -228,36 +293,56 @@ public class World {
         checkActive();
     }
 
+    /**
+     * Find local world visible by entity
+     * @param attackWorldSize entity attack world size
+     * @param row entity row
+     * @param column entity column
+     * @return local world visible by entity
+     */
     protected World getLocal(int attackWorldSize, int row, int column) {
+        // find min/max for rows and columns
         int minColumn = 0;
         int maxColumn = world[0].length -1;
         int minRows = 0;
         int maxRows = world.length -1;
 
+        // find range
         int maxRange = (attackWorldSize-1)/2;
 
+        // find start/stop for rows and columns
         int startRow = Math.max(minRows, (row - maxRange));
         int stopRow = Math.min(maxRows, (row + maxRange));
         int startColumn = Math.max(minColumn, (column - maxRange));
         int stopColumn = Math.min(maxColumn, (column + maxRange));
 
+        // create a local world
         World attackWorld = new World(attackWorldSize, attackWorldSize);
+
+        // initialize attack world row and columns
         int attackRow = 0;
         int attackColumn = 0;
+
+        // check rows and columns in range
         for (int currentRow = row - maxRange; currentRow <= row + maxRange; currentRow++) {
             for (int currentColumn = column - maxRange; currentColumn <= column + maxRange; currentColumn++){
 
+                // check if current row or column is out of bound
                 if ((currentRow < startRow) || (currentRow > stopRow) || (currentColumn < startColumn) || (currentColumn > stopColumn)) {
                     attackWorld.addEntity(attackRow, attackColumn, Wall.getWall());
                 }else{
+                    // copy entity
                     Entity entity = world[currentRow][currentColumn];
                     attackWorld.addEntity(attackRow, attackColumn, entity);
                 }
+                // next column
                 attackColumn++;
             }
+            // next row, reset columns
             attackRow++;
             attackColumn = 0;
         }
+        // return local/attack world
         return attackWorld;
     }
 

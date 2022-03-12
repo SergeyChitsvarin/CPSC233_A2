@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WorldTest {
 
     /**
-     * Returns string representation of the world
+     * Returns string representation of the world (world scenario world.txt)
      */
     @Test
     void worldStringSuccess() {
@@ -29,7 +29,7 @@ class WorldTest {
     }
 
     /**
-     * Returns string representation of the game
+     * Returns string representation of the game (world scenario world.txt)
      */
     @Test
     void gameStringSuccess() {
@@ -45,7 +45,7 @@ class WorldTest {
     }
 
     /**
-     * Tests scenario with attackWorldSize 3 from Monster point
+     * Tests scenario with attackWorldSize 3 from Monster point (world scenario world.txt)
      */
     @Test
     void getLocalAttackWorldSize3() {
@@ -66,7 +66,7 @@ class WorldTest {
     }
 
     /**
-     * Tests scenario with attackWorldSize 3 from Hero point
+     * Tests scenario with attackWorldSize 3 from Hero point (world scenario world.txt)
      */
     @Test
     void getLocalAttackWorldSize3FromHeroPoint() {
@@ -87,7 +87,7 @@ class WorldTest {
     }
 
     /**
-     * Tests scenario with attackWorldSize 5 from Monster point
+     * Tests scenario with attackWorldSize 5 from Monster point (world scenario world.txt)
      */
     @Test
     void getLocalAttackWorldSize5() {

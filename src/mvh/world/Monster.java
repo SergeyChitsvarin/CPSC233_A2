@@ -105,24 +105,37 @@ public final class Monster extends Entity {
             return direction;
         }
 
-        // do not move
+        // do not move, stay
         return Direction.STAY;
     }
 
+    /**
+     * returns direction to attack a hero
+     * @param local The local view of the entity (immediate neighbors 3x3)
+     * @return returns direction for an attack
+     */
     @Override
     public Direction attackWhere(World local) {
+        // check rows (bottom to top) and columns (right to left)
         for(int row = local.getRows() - 1 ; row >= 0; row--){
             for(int column = local.getColumns() - 1; column >= 0; column-- ){
 
+                // find enemy at row and column
                 Entity entity = local.getEntity(row, column);
 
+                // check if enemy is an alive hero
                 if (entity instanceof Hero && entity.isAlive()){
+                    // calculate row and column for change
                     int rowChange =  row  - 1;
                     int columnChange = column - 1;
+
+                    // calculate and return direction based on calculated rows and columns
                     return Direction.getDirection(rowChange, columnChange);
                 }
             }
         }
+
+        // default scenario
         return null;
     }
 

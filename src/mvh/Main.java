@@ -13,7 +13,13 @@ import java.util.Random;
  * the heroes win, or the monster win.
  * @author Jonathan Hudson
  * @version 1.0
+ *
+ * Name: Sergey Chitsvarin
+ * Tutorial: 04
+ * date: 03/11/2022
+ *
  */
+
 public final class Main {
 
 

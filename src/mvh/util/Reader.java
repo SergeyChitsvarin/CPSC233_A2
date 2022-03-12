@@ -15,39 +15,51 @@ import java.util.*;
  */
 public final class Reader {
     /**
-     * The method opens a fileWorld and reads through it after which it creates a new Object world and adds entities if present
+     * Opens a fileWorld and reads through it after which it creates a new Object world and adds entities if present
      * @param fileWorld file that contains information about the world of the game
      * @return  an object world with entities at specific locations provided in fileWorld
      */
     public static World loadWorld(File fileWorld) {
         try {
+            // create a file reader
             Scanner fileReader = new Scanner(fileWorld);
+
             // read through and assign number of rows found in first line
             String firstLine = fileReader.nextLine();
             int rowCount = Integer.parseInt(firstLine);
+
             // read through and assign number of columns found in second line
             String secondLine = fileReader.nextLine();
             int columnCount = Integer.parseInt(secondLine);
+
             // create new world object
             World world = new World(rowCount, columnCount);
+
             // calculates number of lines
             int lineNum = rowCount * columnCount;
+
             // loops through while line number is greater than zero
             while (lineNum > 0){
+
                 // reads onto the next line from the file
                 String line = fileReader.nextLine();
+
                 // splits the line using "," delimiter
                 String[] lineObjects = line.split(",");
+
                 // find length of line to determine the number of elements in the line
                 int numOfElementsInLine = lineObjects.length;
-                // proceeds if the number of elements is greater than 2 meaning either a Hero or Monster is on tile
+
+                // checks if Hero or Monster is on tile
                 if (numOfElementsInLine > 2) {
+
                     // assigns variables which are similar between Monster and Hero
                     int row = Integer.parseInt(lineObjects[0]);
                     int column = Integer.parseInt(lineObjects[1]);
                     String type = lineObjects[2];
                     char symbol = lineObjects[3].charAt(0);
                     int health = Integer.parseInt(lineObjects[4]);
+
                     // determine if Monster is on the tile
                     if (type.equals("MONSTER")) {
                         // assigns weaponType for the Monster
@@ -59,6 +71,7 @@ public final class Reader {
                         world.addEntity(row, column, monster);
 
                     }
+
                     // determines if Hero is on the tile
                     if (type.equals("HERO")) {
                         // assigns weapon and armor strength for the Hero
@@ -76,8 +89,10 @@ public final class Reader {
             }
             // reset id counter
             Entity.resetIDCounter();
+
             // returns world object with Hero and Monster entities (if applicable)
             return world;
+
             // bring up error if file was not found
         } catch (FileNotFoundException error) {
             System.out.println("File was not found.");
@@ -89,7 +104,7 @@ public final class Reader {
             error.printStackTrace();
             System.exit(1);
         }
-
+        // default value for world
         return null;
     }
 }
